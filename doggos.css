@@ -1,0 +1,48 @@
+@keyframes spin {
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+.spinner {
+    font-size: 50px;
+    text-align: center;
+    animation: 2s spin linear infinite;
+    display: none;
+}
+
+.dog-img {
+    display: none;
+}
+.show {
+    display: block;
+    margin: 0 auto;
+    padding: 5rem 5rem;
+}
+
+h1 {
+background-color: yellow;
+margin: 5 auto;
+padding: 4rem 0;
+font-size: 3rem;
+color: orangered;
+text-align:justify;
+font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+}
+.hello {
+    margin: 0 2rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.breeds {
+    margin: 0 2rem;
+    padding: 0.5rem 2rem;
+    border-radius: 10px;
+    background-color:lightgoldenrodyellow;
+    border: 4px solid yellow;
+}

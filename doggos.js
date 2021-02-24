@@ -1,10 +1,10 @@
-/* const BREEDS_URL = 'https://dog.ceo/api/breeds/image/random';
+/* const BREEDS_URL1 = 'https://dog.ceo/api/breeds/image/random';
 
 function addDoggo() {
 
     // show loading spinner
 
-fetch(BREEDS_URL)
+fetch(BREEDS_URL1)
     .then(function(response) {
         return response.json();
     })
@@ -12,20 +12,21 @@ fetch(BREEDS_URL)
         const img = document.createElement('img');
         img.src = data.message;
         img.alt ='cute doggo';
-        console.log(data)
         document.querySelector('.doggos').appendChild(img);
 
 
-        //stop showing lg
+        //stop showing loading spinner
     })
     
-}
+} 
 
 document.querySelector('.add-doggo').addEventListener
-("click", addDoggo); */
+("click", addDoggo);  */ 
 
 const BREEDS_URL ='https://dog.ceo/api/breeds/list/all'
 const select = document.querySelector('.breeds');
+
+
 
 fetch(BREEDS_URL)
     .then(function (response) {
@@ -40,10 +41,35 @@ fetch(BREEDS_URL)
             option.value = breedsArray[i];
             option.innerText = breedsArray[i];
             select.appendChild(option);
+            const img = document.createElement('img');
         }
     })
 
     select.addEventListener('change', function(event) {
-     console.log(event.target.value);
-     console.log(`https://dog.ceo/api/breed/${event.target.value}image/random`)       
+    
+     let url =`https://dog.ceo/api/breed/${event.target.value}/images/random`
+     getDoggo(url);
     });
+ 
+
+const img = document.querySelector('.dog-img');
+const spinner =document.querySelector('.spinner');
+
+function getDoggo (url) {
+    spinner.classList.add("show");
+    img.classList.remove("show");
+ fetch(url)
+    .then(function(response) {
+    return response.json();
+})
+    .then(function(data) {
+        img.src = data.message;
+       // spinner.classList.remove("show");
+       // img.classList.add("show");
+    })
+}
+
+img.addEventListener("load", function() {
+    spinner.classList.remove("show");
+    img.classList.add("show");
+})
